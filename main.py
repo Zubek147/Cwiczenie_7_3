@@ -46,3 +46,13 @@ def create_contact(rodzaj_wizytowki, ilosc):
         contacts.append(contact)
     return contacts
 
+#Przyklad uzycia kratora wizytowek
+
+ilosc_wizytowek = 5
+rodzaj_wizytowki = random.choice(["base", "business"])
+wizytowki = create_contact(rodzaj_wizytowki, ilosc_wizytowek)
+
+for wizytowka in wizytowki:
+    wizytowka.contact()
+    print(f"Dlugosc imienia i nazwiska: {wizytowka.label_length}")
+    print()
