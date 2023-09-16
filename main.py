@@ -28,3 +28,21 @@ class BusinessContact(BaseContact):
     def contact(self):
         print(f"Wybieram numer {self.telefon_sluzbowy} i dzwonie do {self.imie} {self.nazwisko} w firmie {self.firma}")
 
+def create_contact(rodzaj_wizytowki, ilosc):
+    contacts = []
+
+    for _ in range(ilosc):
+        imie = fake.first_name()
+        nazwisko = fake.last_name()
+        telefon = fake.phone_number()
+        email = fake.email()
+        if rodzaj_wizytowki == "base":
+            contact = BaseContact(imie, nazwisko, telefon, email)
+        elif rodzaj_wizytowki == "business":
+            stanowisko = fake.job()
+            firma = fake.company()
+            telefon_sluzbowy = fake.phone_number()
+            contact = BusinessContact(imie, nazwisko, telefon, email, stanowisko, firma, telefon_sluzbowy)
+        contacts.append(contact)
+    return contacts
+
